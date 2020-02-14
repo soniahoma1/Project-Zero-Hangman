@@ -1,7 +1,9 @@
-words = ["myles","eduardo ","angel", "marlene","aurelie","anca","kris","kita","cat","jacob","julia","jesus","christian","leighann","johnson","steven","carson","brock","allen","kesha"]
-imgURL = []
-guessedLetters = []
-guessCount = 1;
+let words = ["myles","eduardo","angel","marlene","aurelie","anca","kris","kita","cat","jacob","julia","jesus","christian","leighann","johnson","steven","carson","brock","allen","kesha"]
+let imgURL = []
+let guessedLetters = []
+let guessCount = 0;
+let wrongGuesses = 0;
+let maxWrongGuesses = 9;
 let content
 
 // // example of querySelector to grab an element on the DOM
@@ -12,14 +14,9 @@ let content
  
  //randomly select a word (Math.random())
  let randomName = words[Math.floor(Math.random()*words.length)]
- //word.length
+
  
- 
- // for (let i = 0; i < length of word) {
-     //       let li = document.createElement('li')
-     //       li.innerHTML ="_" 
-     //       container.appendChild(li)
-//     }
+//     
 function generateWord() {
     randomName = words[Math.floor(Math.random()*words.length)]
     console.log(randomName)
@@ -46,7 +43,7 @@ for (let i = 0; i < keyboard.length; i++) {
     
         let letter = event.target.innerHTML
         console.log(letter)
-        if (randomName.includes(letter) === true ){
+        if (randomName.includes(letter) === true && wrongGuesses < maxWrongGuesses){
             //put the letter into the _______
             for (let i = 0; i <content.length; i++) {
                 if (letter === randomName[i]){
@@ -54,13 +51,58 @@ for (let i = 0; i < keyboard.length; i++) {
                 }
             //replace the letter in content at index i 
             }
-            console.log(content)
+            console.log({content})
             renderWord()
-        
+            if(!checkUnderscores()){
+                window.alert("You Won!");
+            }
+        //if guess is wrong
         } else {
-            document.getElementById('hangman').setAttribute("src",`./images/img2.gif`)
-        } 
-    });
+            wrongGuesses++;
+            // document.getElementById('hangman').setAttribute("src",`./images/img2.gif`)
+            //check number of guesses
+            function renderHangman(numWrong){
+                if (numWrong < maxWrongGuesses) {
+                    document.getElementById('hangman').setAttribute("src",`./images/img${numWrong+1}.gif`)
+                } else {
+                    document.getElementById('hangman').setAttribute("src",`./images/img10.gif`)
+                }
+            }
+            renderHangman(wrongGuesses);
+            if (wrongGuesses === 9) {
+                window.alert("You Lost!");
+            }  
+}})}
+function checkUnderscores() {
+    console.log({content})
+    if (content.includes("_")){
+        console.log('yeet')
+        return true
+    }
+    else{
+        console.log('beep')
+        return false
+    }
 }
-     
+//if (maxWrongGuesses === 9){
+ //   window.alert("You lost");
+// if wrongGuesses < maxWrongguesses && underscores are all replaced) 
+// window.alert("You won");
 
+reset = document.getElementById('reset');
+reset.addEventListener('click', gameRestart);
+ 
+  function gameRestart(){
+      generateWord();
+      renderWord();
+      wrongGuesses = 0;
+      document.getElementById('hangman').setAttribute("src",`./images/img${wrongGuesses+1}.gif`);
+  }
+
+hint = document.getElementById('hint');
+hint.addEventListener('click', hints);
+   
+function hints() {
+  prompt = "Someone in this Room";
+  alert("Someone in this Room");
+}

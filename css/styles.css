@@ -1,32 +1,48 @@
+
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
+
+
+
 h1 {
     text-align: center;
+    font-size: 45px;
+    margin-bottom: 0;
+    
 }
+
 p {
-    text-align: center
+    text-align: center;
+    margin-top: 1;
+    font-size: 19;
+    color: blue;
 }
 #keyboard {
     display: flex;
     list-style: none;
     font-size: 20px;
+    
 }
 #keyboard li {
     margin: 0 5px 0 5px;
     font-weight: bold;
-    color: blue;
+    color: black;
     padding: 9px;
-    border: 2px solid #55504F ;
+    border: 2px dotted #55504F ;
     background: #fff;    height: 28px;
     line-height: 30px;
     text-align: center;
+    
+    
 }
 .container {
     font-size: 30px;
-    bottom: 100;
-    left: 350;
+   display: flex;
 }
 
 .guess_container{
    text-align: center;
+   font-size: 60px;
+   
 }
 .wordSpaces {
     border-bottom: 10px solid;
@@ -34,4 +50,27 @@ p {
 img {
     height: 300px;
     width: 300px;
+    margin-left: 40;
+    border-radius: 10px;
+    box-shadow: 0 15px 20px 0px rgba(0,0,0,0.4);
   }
+p {
+    font-size: 25px;
+}
+#reset {
+    font-size: 15px;
+    margin-left: 70%;
+}
+#hint {
+    font-size: 15px;
+    margin-left: 10%;
+}
+body {
+    background: rgb(175,234,242);
+background: linear-gradient(0deg, rgba(175,234,242,1) 0%, rgba(252,200,172,1) 35%, rgba(252,200,172,1) 63%, rgba(212,178,241,1) 100%);
+    font-family: "rock salt";
+}
+#keyContainer {
+    box-shadow: green;
+
+}
