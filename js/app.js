@@ -6,7 +6,7 @@ let wrongGuesses = 0;
 let maxWrongGuesses = 9;
 let content
 
-// // example of querySelector to grab an element on the DOM
+
  let guess_container = document.querySelector('.guess_container')
 //  // changing the text of the element we grabbed
 //  console.log(guess_container)
